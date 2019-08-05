@@ -13,7 +13,7 @@
     dest: /home/benjixxx/webAppVolume
 
 # Changer la permission du fichier war de destination
--name: sudo chod 755 /home/benjixxx/webAppVolume/*.war
+- name: sudo chod 755 /home/benjixxx/webAppVolume/*.war
 
 #Création du container tomcat 
 - name: tomcat container
