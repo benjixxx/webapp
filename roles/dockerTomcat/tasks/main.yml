@@ -1,0 +1,27 @@
+---
+# tasks file for dockerTomcat
+
+#Recuperer maven artifact
+- name: download mavane artifact
+  maven_artifact:
+    group_id: org.jenkins.main
+    version: lastest
+    extension: war
+    repository_url: 'http://192.168.1.2:8081/repository/nexusrep/'
+    username: admin
+    password: admin
+    dest: /home/benjixxx/webAppVolume
+
+# Changer la permission du fichier war de destination
+-name: sudo chod 755 /home/benjixxx/webAppVolume/*.war
+
+#Création du container tomcat 
+- name: tomcat container
+  docker_container:
+    name: tomcat
+    image: tomcat:9.0
+    state : started
+    ports: 
+    - 8889:8080
+    volumes:
+    - /home/benjixxx/webAppVolume/:/usr/local/tomcat/webapps
