@@ -18,12 +18,25 @@
   shell: sudo chmod 755 /home/benjixxx/webAppVolume/*.war
 
 #Création du container tomcat 
-- name: tomcat container
+- name: création container tomcat
   docker_container:
     name: tomcat
     image: tomcat:8.0
-    state : started
-    ports: 
-    - 8889:8080
+    ports:
+    - "8889:8080"
     volumes:
     - /home/benjixxx/webAppVolume/:/usr/local/tomcat/webapps
+
+# Création deuxiéme container tomcat
+- name: création  deuxiéme container tomcat
+  docker_container:
+    name: tomcat2
+    image: tomcat:8.0
+    ports:
+    - "8890:8080"
+    volumes:
+    - /home/benjixxx/webAppVolume/:/usr/local/tomcat/webapps
+  
+    
+  
+

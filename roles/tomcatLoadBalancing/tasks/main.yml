@@ -1,0 +1,50 @@
+---
+# tasks file for tomcatLoadBalancing
+#load balancing tomcat
+
+- name : nginx container
+  docker_container:
+    name: nginx
+    image: nginx
+    state: started
+    ports:
+    - "8585:80"
+    volumes:
+    - /home/benjixxx/cluster/:/etc/nginx/conf.d/
+    links:
+    - tomcat:tomcat1
+    - tomcat:tomcat2
+    - tomcat:tomcat3
+
+- name : tomcat
+  docker_container:
+    name: tomcat
+    image: tomcat:8.0
+    volumes:
+    - /home/benjixxx/cluster/server.xml:/usr/local/tomcat/conf/server.xml
+    - /home/benjixxx/cluster/ROOT:/usr/local/tomcat/webapps/ROOT
+    - /home/benjixxx/cluster/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+    - /home/benjixxx/webAppVolume/:/usr/local/tomcat/webapps
+
+- name : tomcat
+  docker_container:
+    name: tomcat
+    image: tomcat:8.0
+    volumes:
+    - /home/benjixxx/cluster/server.xml:/usr/local/tomcat/conf/server.xml
+    - /home/benjixxx/cluster/ROOT:/usr/local/tomcat/webapps/ROOT
+    - /home/benjixxx/cluster/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+    - /home/benjixxx/webAppVolume/:/usr/local/tomcat/webapps
+
+- name : tomcat
+  docker_container:
+    name: tomcat
+    image: tomcat:8.0
+    volumes:
+    - /home/benjixxx/cluster/server.xml:/usr/local/tomcat/conf/server.xml
+    - /home/benjixxx/cluster/ROOT:/usr/local/tomcat/webapps/ROOT
+    - /home/benjixxx/cluster/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+    - /home/benjixxx/webAppVolume/:/usr/local/tomcat/webapps
+
+
+
