@@ -1,5 +1,5 @@
 - name : "[ deployer-war sur Container Tomcat]"
-  hosts: 192.168.1.2
+  hosts: 172.16.30.102
   become: yes
   roles:
     - dockerTomcat
