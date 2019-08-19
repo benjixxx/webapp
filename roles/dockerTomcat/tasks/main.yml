@@ -27,7 +27,7 @@
     volumes:
     - /home/benjixxx/webAppVolume/:/usr/local/tomcat/webapps
 
-# Création deuxiéme container tomcat
+# Création 2éme container tomcat
 - name: création  deuxiéme container tomcat
   docker_container:
     name: tomcat2
